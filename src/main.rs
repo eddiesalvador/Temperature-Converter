@@ -9,6 +9,9 @@ fn main() {
 
     // loop until user exits infinite loop via a break
     loop {
+        // Flushes the io so that print macros print before the input is requested
+        io::Write::flush(&mut io::stdout()).expect("flush failed!");
+        
         // Create a user input 
         let mut input_unit = String::new();
         io::stdin()
@@ -24,18 +27,25 @@ fn main() {
             break;
         } else if int_input_unit < 1 {
             println!("This is not a valid input.");
-            println!("Please enter a value that corresponds to a conversion:");
+            println!("Please enter a value that corresponds to a conversion.");
+            print!(": ");
+            
             continue;
         } else if int_input_unit > 7 {
             println!("This is not a valid input.");
             println!("Please enter a value that corresponds to a conversion:");
+            print!(": ");
             continue;
         }
 
         // Ask user the value of the unit, and give working examples
         println!("What is the value of the unit?");
         println!("For example, \"81.5\" & \"32\" are acceptable inputs.");
+        print!(": ");
 
+        // Flushes the io so that print macros print before the input is requested
+        io::Write::flush(&mut io::stdout()).expect("flush failed!");
+        
         // Create a user intput
         let mut input_value = String::new();
         io::stdin()
@@ -60,15 +70,17 @@ fn main() {
         } else if int_input_unit == 6 {
             println!("{} degrees celsius", kelvin_to_celsius(int_input_value));
         } else {
-            println!("This is not a valid option");
+            println!("This is not a valid option.");
         }
 
         // This will ask the user again for another input as
         // this is the end of the loop. 
-        println!("Enter a value that corresponds to a conversion: ");
+        println!();
+        println!("Enter a value that corresponds to a conversion.");
+        print!(": ");
     }
     // Thanking users for using my program
-    println!("Thank you for using my temperature converter");
+    println!("Thank you for using my temperature converter!");
 }
 
 // Below are the equations used to convert the tempature values
@@ -108,5 +120,5 @@ fn menu() {
 
     // Inform user they can exit the program
     println!("Type \"7\" to exit the program.");
-    //print!(": ");
+    print!(": ");
 }
