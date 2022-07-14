@@ -1,20 +1,14 @@
 use std::io;
 
 fn main() {
+    // Welcome users
+    println!("Hello, this program will convert temperatures!");
+    
+    // Show users the menu so they understand the program's commands    
+    menu();
+
     // loop until user exits infinite loop via a break
     loop {
-        // Ask user what type of tempature conversion they want
-        println!("Hello, this program will convert temperatures!");
-        println!("Type \"1\" for Celsius to Fahrenheit.");
-        println!("Type \"2\" for Celsius to Kelvin.");
-        println!("Type \"3\" for Fahrenheit to Celsius.");
-        println!("Type \"4\" for Fahrenheit to Kelvin.");
-        println!("Type \"5\" for Kelvin to Fahrenheit.");
-        println!("Type \"6\" for Kelvin to Celsius.");
-
-        // Inform user they can exit the program
-        println!("Type \"0\" to exit the program.");
-
         // Create a user input 
         let mut input_unit = String::new();
         io::stdin()
@@ -26,14 +20,21 @@ fn main() {
 
         // Check if user decided to exit program before 
         // asking the user for a second input
-        if int_input_unit == 0 {
+        if int_input_unit == 7 {
             break;
+        } else if int_input_unit < 1 {
+            println!("This is not a valid input.");
+            println!("Please enter a value that corresponds to a conversion:");
+            continue;
+        } else if int_input_unit > 7 {
+            println!("This is not a valid input.");
+            println!("Please enter a value that corresponds to a conversion:");
+            continue;
         }
 
-        // Ask user the value of the unit
+        // Ask user the value of the unit, and give working examples
         println!("What is the value of the unit?");
         println!("For example, \"81.5\" & \"32\" are acceptable inputs.");
-        
 
         // Create a user intput
         let mut input_value = String::new();
@@ -61,9 +62,13 @@ fn main() {
         } else {
             println!("This is not a valid option");
         }
+
+        // This will ask the user again for another input as
+        // this is the end of the loop. 
+        println!("Enter a value that corresponds to a conversion: ");
     }
+    // Thanking users for using my program
     println!("Thank you for using my temperature converter");
-            
 }
 
 // Below are the equations used to convert the tempature values
@@ -91,3 +96,17 @@ fn kelvin_to_celsius(n: f32) -> f32 {
     return n - 273.15; 
 }
 
+// The menu fn shows all the tempature conversion options
+fn menu() {
+    // Ask user what type of tempature conversion they want
+    println!("Type \"1\" for Celsius to Fahrenheit.");
+    println!("Type \"2\" for Celsius to Kelvin.");
+    println!("Type \"3\" for Fahrenheit to Celsius.");
+    println!("Type \"4\" for Fahrenheit to Kelvin.");
+    println!("Type \"5\" for Kelvin to Fahrenheit.");
+    println!("Type \"6\" for Kelvin to Celsius.");
+
+    // Inform user they can exit the program
+    println!("Type \"7\" to exit the program.");
+    //print!(": ");
+}
