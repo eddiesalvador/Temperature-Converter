@@ -83,7 +83,7 @@ fn main() {
     println!("Thank you for using my temperature converter!");
 }
 
-// Below are the equations used to convert the tempature values
+// Below are the equations used to convert the temperature values
 fn celsius_to_fahrenheit(n: f32) -> f32 {
     return 1.8 * n + 32.0; 
 }
@@ -108,9 +108,9 @@ fn kelvin_to_celsius(n: f32) -> f32 {
     return n - 273.15; 
 }
 
-// The menu fn shows all the tempature conversion options
+// The menu fn shows all the temperature conversion options
 fn menu() {
-    // Ask user what type of tempature conversion they want
+    // Ask user what type of temperature conversion they want
     println!("Type \"1\" for Celsius to Fahrenheit.");
     println!("Type \"2\" for Celsius to Kelvin.");
     println!("Type \"3\" for Fahrenheit to Celsius.");
